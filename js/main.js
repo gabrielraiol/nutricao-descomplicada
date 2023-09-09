@@ -3,8 +3,6 @@ titulo.textContent = "Nutrição Descomplicada";
 
 var pacientes = (document.querySelectorAll(".paciente"));
 
-console.log(pacientes.length);
-
 for( i = 0; i < pacientes.length; i++){
 
     var paciente = pacientes[i];
@@ -41,7 +39,8 @@ for( i = 0; i < pacientes.length; i++){
 }
 
 function calcImc(peso, altura) {
-    var imc = 0;
-    imc = peso / (altura * altura);
+
+    var imc = peso / (altura * altura);
+
     return imc.toFixed(2);
 }
