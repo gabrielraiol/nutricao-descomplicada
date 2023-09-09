@@ -12,9 +12,12 @@ botaoAdicionar.addEventListener("click", function(event){
 
     var tabela = document.querySelector("#tabela-pacientes");
 
-    tabela.appendChild(pacienteTr);
+    var pacienteValido = validaPaciente(paciente.peso, paciente.altura);
 
-    form.reset();
+    if (pacienteValido) {
+        tabela.appendChild(pacienteTr);
+        form.reset();
+    }
 
 });
 
@@ -49,4 +52,24 @@ function montaTd(dado, classe) {
     td.classList.add(classe);
 
     return td;
+}
+
+function validaPaciente(peso, altura) {
+
+    var pesoValido = validaPeso(peso);
+    var alturaValida = validaAltura (altura);
+
+    if (!pesoValido) {
+        console.log("peso inválido");
+        return alert("Paciente com peso inválido, revise os dados!");
+    }
+
+    if (!alturaValida) {
+        console.log("altura inválida");
+        return alert("Paciente com altura inválida, revise os dados!");
+    }
+
+    if (pesoValido && alturaValida) {
+        return true;
+    }
 }
