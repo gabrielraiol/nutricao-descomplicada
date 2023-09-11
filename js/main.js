@@ -1,22 +1,22 @@
-var titulo = (document.querySelector(".titulo"));
+let titulo = (document.querySelector(".titulo"));
 titulo.textContent = "Nutrição Descomplicada";
 
-var pacientes = (document.querySelectorAll(".paciente"));
+let pacientes = (document.querySelectorAll(".paciente"));
 
-for( i = 0; i < pacientes.length; i++){
+for( let i = 0; i < pacientes.length; i++){
 
-    var paciente = pacientes[i];
+    let paciente = pacientes[i];
 
-    var tdPeso = paciente.querySelector(".info-peso");
-    var pacientePeso = tdPeso.textContent;
+    let tdPeso = paciente.querySelector(".info-peso");
+    let pacientePeso = tdPeso.textContent;
 
-    var tdAltura = paciente.querySelector(".info-altura");
-    var pacienteAltura = tdAltura.textContent;
+    let tdAltura = paciente.querySelector(".info-altura");
+    let pacienteAltura = tdAltura.textContent;
 
-    var tdImc = paciente.querySelector(".info-imc");
+    let tdImc = paciente.querySelector(".info-imc");
 
-    var pesoValido = validaPeso(pacientePeso);
-    var alturaValida = validaAltura(pacienteAltura);
+    let pesoValido = validaPeso(pacientePeso);
+    let alturaValida = validaAltura(pacienteAltura);
 
     if (!pesoValido){
         console.log("peso invalido");
@@ -33,10 +33,10 @@ for( i = 0; i < pacientes.length; i++){
     }
 
     if (pesoValido && alturaValida) {
-        var imc = calcImc(pacientePeso, pacienteAltura);
+        let imc = calcImc(pacientePeso, pacienteAltura);
         tdImc.textContent = imc;
     }
-}
+};
 
 function validaPeso(peso){
     if (peso>0 && peso<300) {
@@ -44,7 +44,7 @@ function validaPeso(peso){
     } else {
         return false;
     }
-}
+};
 
 function validaAltura(altura){
     if (altura>0 && altura<2.5) {
@@ -52,11 +52,11 @@ function validaAltura(altura){
     } else {
         return false;
     }
-}
+};
 
 function calcImc(peso, altura) {
 
-    var imc = peso / (altura * altura);
+    let imc = peso / (altura * altura);
 
     return imc.toFixed(2);
-}
+};

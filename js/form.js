@@ -1,18 +1,18 @@
-var botaoAdicionar = document.querySelector("#adicionar-paciente");
+let botaoAdicionar = document.querySelector("#adicionar-paciente");
 
 botaoAdicionar.addEventListener("click", function(event){
 
     event.preventDefault();
     
-    var form = document.querySelector("#form-adiciona");
+    let form = document.querySelector("#form-adiciona");
 
-    var paciente = obtemPacienteDoFormulario(form);
+    let paciente = obtemPacienteDoFormulario(form);
 
-    var pacienteTr = montaTr(paciente);
+    let pacienteTr = montaTr(paciente);
 
-    var tabela = document.querySelector("#tabela-pacientes");
+    let tabela = document.querySelector("#tabela-pacientes");
 
-    var pacienteValido = validaPaciente(paciente.peso, paciente.altura);
+    let pacienteValido = validaPaciente(paciente.peso, paciente.altura);
 
     if (pacienteValido) {
         tabela.appendChild(pacienteTr);
@@ -22,7 +22,7 @@ botaoAdicionar.addEventListener("click", function(event){
 });
 
 function obtemPacienteDoFormulario(form){
-    var paciente = {
+    let paciente = {
         nome: form.nome.value,
         peso: form.peso.value,
         altura: form.altura.value,
@@ -34,7 +34,7 @@ function obtemPacienteDoFormulario(form){
 };
 
 function montaTr(paciente) {
-    var pacienteTr = document.createElement("tr");
+    let pacienteTr = document.createElement("tr");
     pacienteTr.classList.add("paciente");
 
     pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
@@ -44,32 +44,50 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
 
     return pacienteTr;
-}
+};
 
 function montaTd(dado, classe) {
-    var td = document.createElement("td");
+    let td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe);
 
     return td;
-}
+};
 
 function validaPaciente(peso, altura) {
 
-    var pesoValido = validaPeso(peso);
-    var alturaValida = validaAltura (altura);
+    let pesoValido = validaPeso(peso);
+    let alturaValida = validaAltura (altura);
+    let erros = [];
+    let mensagensErro = document.querySelector("#mensagens-erro");
 
     if (!pesoValido) {
         console.log("peso inválido");
-        return alert("Paciente com peso inválido, revise os dados!");
+        erros.push("Paciente com peso inválido, revise os dados!");
     }
 
     if (!alturaValida) {
         console.log("altura inválida");
-        return alert("Paciente com altura inválida, revise os dados!");
+        erros.push("Paciente com altura inválida, revise os dados!");
     }
 
     if (pesoValido && alturaValida) {
+
+        mensagensErro.style.display = "none";
         return true;
+        
+    } else {
+
+        mensagensErro.style.display = "block";
+        mensagensErro.innerHTML = "";
+
+        erros.forEach ( (erro) => {
+            let mensagemErro = document.createElement("li");
+            mensagemErro.textContent = erro;
+            mensagemErro.classList.add("mensagem-erro");
+            
+            mensagensErro.appendChild(mensagemErro);
+            }
+        )
     }
-}
+};
