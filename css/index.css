@@ -147,4 +147,5 @@ button[disabled=disabled], button:disabled {
 	color: red;
 	font-weight: bold;
 	text-transform: uppercase;
+	margin-bottom: 1rem;
 }

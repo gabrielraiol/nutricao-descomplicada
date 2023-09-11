@@ -39,7 +39,7 @@ for( let i = 0; i < pacientes.length; i++){
 };
 
 function validaPeso(peso){
-    if (peso>0 && peso<300) {
+    if ((peso>0 && peso<300) && !peso.length == 0) {
         return true;
     } else {
         return false;
@@ -47,12 +47,20 @@ function validaPeso(peso){
 };
 
 function validaAltura(altura){
-    if (altura>0 && altura<2.5) {
+    if ((altura>0 && altura<2.5) && !altura.length == 0) {
         return true;
     } else {
         return false;
     }
 };
+
+function campoPreenchido(dado) {
+    if (!dado.length == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function calcImc(peso, altura) {
 

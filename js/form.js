@@ -12,7 +12,7 @@ botaoAdicionar.addEventListener("click", function(event){
 
     let tabela = document.querySelector("#tabela-pacientes");
 
-    let pacienteValido = validaPaciente(paciente.peso, paciente.altura);
+    let pacienteValido = validaPaciente(paciente);
 
     if (pacienteValido) {
         tabela.appendChild(pacienteTr);
@@ -54,12 +54,27 @@ function montaTd(dado, classe) {
     return td;
 };
 
-function validaPaciente(peso, altura) {
+function validaPaciente(paciente) {
 
-    let pesoValido = validaPeso(peso);
-    let alturaValida = validaAltura (altura);
+    let pesoValido = validaPeso(paciente.peso);
+    let alturaValida = validaAltura(paciente.altura);
+
+    let nomePreenchido = campoPreenchido(paciente.nome);
+    let pesoPreenchido = campoPreenchido(paciente.peso);
+    let alturaPreenchida = campoPreenchido(paciente.altura);
+    let gorduraPreenchida = campoPreenchido(paciente.gordura);
+
+    let campo = true;
+
+
     let erros = [];
-    let mensagensErro = document.querySelector("#mensagens-erro");
+    let ul = document.querySelector("#mensagens-erro");
+
+    if (!nomePreenchido || !pesoPreenchido || !alturaPreenchida || !gorduraPreenchida) {
+        console.log("campo em branco");
+        erros.push("Não é possível adicionar paciente com campos em branco");
+        campo = false;
+    }
 
     if (!pesoValido) {
         console.log("peso inválido");
@@ -71,23 +86,24 @@ function validaPaciente(peso, altura) {
         erros.push("Paciente com altura inválida, revise os dados!");
     }
 
-    if (pesoValido && alturaValida) {
+    if (pesoValido && alturaValida && campo) {
 
-        mensagensErro.style.display = "none";
+        ul.style.display = "none";
         return true;
-        
+
     } else {
 
-        mensagensErro.style.display = "block";
-        mensagensErro.innerHTML = "";
+        ul.style.display = "block";
+        ul.innerHTML = "";
 
         erros.forEach ( (erro) => {
             let mensagemErro = document.createElement("li");
             mensagemErro.textContent = erro;
             mensagemErro.classList.add("mensagem-erro");
             
-            mensagensErro.appendChild(mensagemErro);
+            ul.appendChild(mensagemErro);
             }
         )
     }
 };
+
