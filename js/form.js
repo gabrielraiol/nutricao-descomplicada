@@ -1,6 +1,6 @@
 let botaoAdicionar = document.querySelector("#adicionar-paciente");
 
-botaoAdicionar.addEventListener("click", function(event){
+botaoAdicionar.addEventListener("click", (event) => {
 
     event.preventDefault();
     
@@ -66,7 +66,6 @@ function validaPaciente(paciente) {
 
     let campo = true;
 
-
     let erros = [];
     let ul = document.querySelector("#mensagens-erro");
 
@@ -106,4 +105,3 @@ function validaPaciente(paciente) {
         )
     }
 };
-
