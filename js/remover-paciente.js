@@ -1,9 +1,10 @@
-pacientes = document.querySelectorAll(".paciente");
-console.log(pacientes);
+let tabela = document.querySelector("#tabela-pacientes");
+console.log(tabela);
 
-pacientes.forEach( (paciente) => {
-    paciente.addEventListener("dblclick", function() {
-        console.log("fui clicado com um duplo click");
-        this.remove();
-    })
+tabela.addEventListener("dblclick", (event) =>{
+    event.target.parentNode.classList.add("fade-out");
+    
+    setTimeout(() => {
+        event.target.parentNode.remove();
+    }, 700);
 });

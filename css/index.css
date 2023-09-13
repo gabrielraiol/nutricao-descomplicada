@@ -149,3 +149,8 @@ button[disabled=disabled], button:disabled {
 	text-transform: uppercase;
 	margin-bottom: 1rem;
 }
+
+.fade-out {
+	opacity: 0;
+	transition: 0.7s;
+}
