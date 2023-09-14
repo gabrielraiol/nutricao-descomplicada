@@ -7,12 +7,17 @@ campoFiltro.addEventListener("input", (event) => {
         
             let paciente = pacientePosicao;
             let tdNome = paciente.querySelector(".info-nome");
-    
-            nome = tdNome.textContent;
+
+            // Opção para fazer a comparação usando RegGex
+            // let nome = tdNome.textContent;
+            // let comparaCaractere = new RegExp (event.target.value, "i");
+            // if (comparaCaractere.test(nome)) {
             
-            let expressao = new RegExp (event.target.value, "i");
-    
-            if (expressao.test(nome)) {
+            // Opção que preferi usar, com includes()
+            let nome = tdNome.textContent.toLowerCase();
+            let comparaCaractere = event.target.value.toLowerCase();
+            
+            if (nome.includes(comparaCaractere)) {
                 paciente.classList.remove("esconde-elemento");
             } else {
                 paciente.classList.add("esconde-elemento");
