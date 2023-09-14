@@ -17,8 +17,10 @@ botaoAdicionar.addEventListener("click", (event) => {
     if (pacienteValido) {
         tabela.appendChild(pacienteTr);
         form.reset();
-    }
 
+        // Atualizando o array de pacientes para que a função de filtro receba os valores atualizados, após adição na tabela.
+        pacientes = document.querySelectorAll(".paciente");
+    }
 });
 
 function obtemPacienteDoFormulario(form){

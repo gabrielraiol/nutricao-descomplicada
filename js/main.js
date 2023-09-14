@@ -1,7 +1,7 @@
 let titulo = (document.querySelector(".titulo"));
 titulo.textContent = "Nutrição Descomplicada";
 
-let pacientes = (document.querySelectorAll(".paciente"));
+let pacientes = document.querySelectorAll(".paciente");
 
 for( let i = 0; i < pacientes.length; i++){
 
