@@ -20,6 +20,13 @@ botaoAdicionar.addEventListener("click", (event) => {
 
         // Atualizando o array de pacientes para que a função de filtro receba os valores atualizados, após adição na tabela.
         pacientes = document.querySelectorAll(".paciente");
+
+        // Store the updated pacientes array in local storage as JSON
+        // Test later
+
+        // localStorage.setItem('pacientes', JSON.stringify(Array.from(pacientes)));    
+        // const storedPacientes = localStorage.getItem('pacientes');
+        // console.log(storedPacientes);
     }
 });
 
